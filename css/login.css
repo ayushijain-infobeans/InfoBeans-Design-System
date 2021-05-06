@@ -1,0 +1,72 @@
+body{
+   margin: 0;
+   padding: 0;
+    background-image: url(../images/Login-bg.png);
+    background-size: cover;
+}
+.navbar{
+    background-color: #3a3537;;
+}
+.Intranet {
+    font-size: 16px;
+    color: #d8d7d7;
+    font-weight: 600;
+  }
+.login-container {
+    width: 100%;
+    max-width: 360px;
+   
+    background: #fff;
+    margin: 48px auto;
+    padding: 50px;
+}
+.logo {
+    width: 100%;
+    padding: 15px 0px 25px;
+    text-align: center;
+}
+.form-group {
+    width: 239px;
+    height: 45px;
+    position: relative;
+    margin-bottom: 16px;
+}
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.field{
+    width: 244px;
+    height: 37px;
+    padding: 12px;
+}
+.forgot {
+    color: #ea1b3c;
+    text-decoration: none;
+  }
+.button{
+    border: 1px solid #ea1b3c;
+    background: #ea1b3c;
+    color: #fff;
+    padding: 10px 12px;
+    width: 246px;
+}  
+.button:hover{
+    background-color:#3a3537;
+    border: 1px solid #3a3537;
+    color: white;
+}
+.footer{
+    text-align: center;
+    color: white;
+    background: transparent;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: #fff;
+    margin-top: 0px;
+}
