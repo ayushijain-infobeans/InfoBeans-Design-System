@@ -1,0 +1,49 @@
+.user-name{
+    color: white;
+    background-color: black;
+}
+ul{
+    padding-right: 0px;
+}
+.img-user{
+  margin: 0 10px;
+
+  align-self: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+}
+.caret-down{
+  font-size: 20px;
+ 
+  color: white;
+  padding: 10px;
+}
+.facebook{
+    color: #ea1b3c;
+}
+.facebook:hover{
+  color: #ea1b3c;
+text-decoration: none;
+}
+
+.card-text{
+  font-size: 17px;
+  color: #000;
+  line-height: 21px;
+  font-weight: 600;
+}  
+.card-text:hover{
+  color: #ea1b3c;
+}
+.card{
+  box-shadow: 3px 7px 4px #888888;
+}
+.see-all{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  white-space: nowrap;
+  padding: 364px;
+   margin-left: 350px;
+}
