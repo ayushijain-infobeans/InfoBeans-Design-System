@@ -6,7 +6,7 @@
     height: 800px;
 }
 .navbar{
-    background-color: #3a3537;;
+    background-color: #3a3537;
 }
 .nav-img{
     width:128px;
@@ -28,7 +28,7 @@
     margin: 48px auto;
     padding: 50px;
 }
-.logo {
+.login-Img {
     width: 100%;
     padding: 15px 0px 25px;
     text-align: center;
@@ -60,7 +60,7 @@
 .forgot {
     color: #ea1b3c;
     text-decoration: none;
-   
+    margin-left: 113px;
   }
 
 .button{
