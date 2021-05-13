@@ -1,8 +1,10 @@
-import react from 'react';
+import react from 'react'
 import '../style/photoGallery.css'
+import Navbar from './Navbar'
 
 function photoGallery(){
     return (
+        <> <Navbar/>
        <div class="home container mt-5">
 
         <h3 class="home-stretch">Recent Photo Galleries
@@ -21,7 +23,7 @@ function photoGallery(){
                      </div>
                 </div>
              </div>
-             <div class="col-md-3 px-0">
+             <div class="col-md-3 ">
                  <div class="card">
                      <img src="https://infobeans-intranet.web.app/assets/images/img-card-gallery.png" class="card-img-top" alt="..." />
                      <div class="card-body">
@@ -31,7 +33,7 @@ function photoGallery(){
                      </div>
              </div>
              </div>
-            <div class="col-md-3 px-0">
+            <div class="col-md-3">
                 <div class="card">
                      <img src="https://infobeans-intranet.web.app/assets/images/img-card-gallery.png" class="card-img-top" alt="..." />
                      <div class="card-body">
@@ -43,7 +45,7 @@ function photoGallery(){
              </div>
          </div>
      </div>
-    
+    </>
     );
 }
 export default photoGallery;
