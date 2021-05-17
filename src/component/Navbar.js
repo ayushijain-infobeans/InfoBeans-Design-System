@@ -1,140 +1,85 @@
-import react from "react";
+import react, { useState } from "react";
+import { useHistory } from "react-router-dom"
 import "../style/NavBar.css";
 
 function Navbar() {
-    return (
-        <nav class="navbar navbar-light ">
 
-            <a class="navbar-brand text-white" href="#">
+    let history = useHistory();
+    function logout() {
+        sessionStorage.removeItem("token");
+        history.push("/");
+    }
+
+    const [click, setclick] = useState(false);
+
+    const handleClick = () => setclick(!click);
+    return (
+        <nav className="navbar navbar-light ">
+
+            <a className="navbar-brand text-white" href="#">
                 <img src="https://infobeans-design-system.web.app/images/logo-infobeans-white.svg" class="nav-img" width="128" height="40" />
-                <span class="Intranet">Intranet Portal</span>
+                <span className="Intranet">Intranet Portal</span>
 
             </a>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Message Board</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Tides</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Applauds</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Jobs</a>
-                </li>
-                <li class="nav-item text-white">
-                    <i class="fas fa-th fa-2x"></i>
-                  </li>
-{/* <li>
-                          <div>Niharikaa</div>
-                            <div>Bansal</div>  
-                            <div class="user-img">
-                            <img src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg"
-                                 alt="user-img"/>
-                        </div>  
-</li> */}
-                  {/* <li> */}
-                  {/* <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="account-info">
-                    <div class="user-name">
-                        <div>Niharikaa</div>
-                        <div>Bansal</div>
-                        <span class="user-img">
-                    <img src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg" class="img-user" alt="user-img" />
+            <div className= "navbar-head">
+                
+            </div>
+            <div className="navbar__menu">
+                <span id="toggle-menu-header" className="ibic-menu"></span>
+                <span className="ibic-clear" id="close-menu-header"></span>
 
-                </span>
-                    </div>
+                <ul className={click ? "navbar__links active" : "navbar__links"}>
+                    <li activeClassName="active">
+                        <a>Home</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a>Message Board</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a>Tides</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a>Applauds</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a>Gallery</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a>Jobs</a>
+                    </li>
+                    <li activeClassName="active">
+                        <a onClick={logout}>LogOut</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="navbar__icon">
+
+                <i class="fas fa-th fa-2x"></i>
+
+                <i className="ibic-apps"></i>
+            </div>
+            <div className="nav-icon" onClick={handleClick}>
+                <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+            </div>
+            <div className="navbar__user">
+                <div className="navbar__userName">
+                    <span>Niharika</span> <span>Bansal</span>
                 </div>
-                 </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-
-
-                  </li> */}
-                {/* <div class="account-info">
-                        <div class="user-name">
-                            <div>Niharikaa</div>
-                            <div>Bansal</div>
-                        </div>
-                        <div class="user-img">
-                            <img src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg"lstyle="width:128px;
-     height:40px;
-     margin-left: 20px;"
-                                 alt="user-img"/>
-                        </div>
-                        <i class="ibic-caret-down"></i>
-                    </div>
-                    <div class="dropdown-menu">
-                        <ul class="dropdown-menu-items">
-                            <li>
-                                <a href="#">
-                                    <i class="ibic-star"></i>
-                                    <span>My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ibic-star"></i>
-                                    <span>Account Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ibic-star"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> */}
-               {/* <a
-                href="#"
-                className="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-              >
-               <div>Niharika
-                        Bansal</div>
-              </a>
-              <div className="dropdown-menu dropdown-menu-right">
-                <a href="#" className="dropdown-item">
-                  My Profile
-                </a>
-                <a href="#" className="dropdown-item">
-                  Account Setting
-                </a>
-                <div className="dropdown-divider"></div>
-                <a href="#" className="dropdown-item">
-                  Logout
-                </a>
-              </div> */}
-                {/* <div class="account-info">
-                    <div class="user-name">
-                        <div>Niharikaa</div>
-                        <div>Bansal</div>
-                    </div>
-                </div>
-                <div class="user-img">
-                    <img src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg" class="img-user" alt="user-img" />
-
+                <img
+                    className="navbar__userImg"
+                    src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg"
+                    alt="user-img"
+                />
+                <div className="nav-caret">
+                    <i className="fas fa-caret-down caret"></i>
                 </div>
 
-                <div class="caret-down">
-                    <i class="fas fa-caret-down"></i>
-                </div> */}
-               
-            </ul>
+
+            </div>
+            {/* <div className="nav-icon" onClick={handleClick}>
+                <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+            </div> */}
         </nav>
     );
 }
