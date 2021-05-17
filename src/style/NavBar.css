@@ -220,16 +220,18 @@ text-decoration: none;
 }
 
 .navbar__links.active{
-  background:#9C9A9B;
+  background:rgba(234,27,60,.95);;
   left: 0;
   opacity: 1;
   transition: all 0.5s ease;
   z-index:1;
   color: #fff;
   height: 100vh;
-
+  font-weight: 500;
+  font-size: 21px;
   text-align: center;
   display: block;
+  transition: 5s;
 }
 
 ul > li{
