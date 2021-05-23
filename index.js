@@ -7,6 +7,8 @@ const multer = require('multer')
 const Router= require('./route/fileUploadroutes')
 const mongoose = require("mongoose")
 
+app.use("/uploads", express.static(__dirname + "/uploads"));
+
 //Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
