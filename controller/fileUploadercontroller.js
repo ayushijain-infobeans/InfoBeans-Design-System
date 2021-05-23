@@ -1,7 +1,8 @@
 const Contact = require('../model/contactSchema');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const router = require('../route/fileUploadroutes')
+const router = require('../route/fileUploadroutes');
+
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -14,13 +15,14 @@ var transporter = nodemailer.createTransport({
 // api for contact us 
 const contactus = async (req, res) => {
     var id = req.body.email
+    var file = req.file.filename
     var mail = {
         from: 'ayushijain039@gmail.com',
         to: id,
-        cc: 'ayushijainit17@acropolis.in',
+        cc: 'ayushijainit17@acropolis.in,ayushijain039@gmail.com',
         subject: 'Test email',
-        text: 'hello,how are you',
-    //  attachment: [{ filename: file }]
+        text: req.body.description,
+        attachments: [{ filename: file}]
     };
     try {
         const contact = await Contact.create({
@@ -28,8 +30,8 @@ const contactus = async (req, res) => {
             lastname: req.body.lastname,
             email: req.body.email,
             description: req.body.description,
-             file:req.body.file,
-            //  file: '../images' + req.file.filename
+            //file:req.body.file,
+            file: "./uploads" + req.file.filename
         })
         console.log(contact)
         transporter.sendMail(mail, (error, info) => {
