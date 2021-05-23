@@ -7,7 +7,7 @@ const path = require('path')
 //multer config
 var Storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '/../Users/HP/Documents/server/images')
+      cb(null, 'uploads')//change2
     },
     filename: (req, file, cb)=> {
       cb(null, + Date.now() + path.extname(file.originalname));
@@ -15,12 +15,12 @@ var Storage = multer.diskStorage({
   })
 
   //multer middleware
-var upload = multer({ storage: Storage }).single('image')
+var upload = multer({ storage: Storage }).single('file')
 
 //multer config for contact us
 var contact_storage=multer.diskStorage({
   destination:function(req,file,cb){
-    cb(null,'/../Users/HP/Documents/server/images')
+    cb(null,'uploads')
   },filename:(req,file,cb)=>{
     cb(null,+Date.now()+path.extname(file.originalname))
   }
