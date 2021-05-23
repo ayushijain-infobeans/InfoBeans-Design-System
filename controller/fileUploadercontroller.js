@@ -15,14 +15,14 @@ var transporter = nodemailer.createTransport({
 // api for contact us 
 const contactus = async (req, res) => {
     var id = req.body.email
-    var file = req.file.filename
+   var attachments = req.body.file
     var mail = {
         from: 'ayushijain039@gmail.com',
         to: id,
         cc: 'ayushijainit17@acropolis.in,ayushijain039@gmail.com',
         subject: 'Test email',
         text: req.body.description,
-        attachments: [{ filename: file}]
+        attachments: [{ filename: attachments}]
     };
     try {
         const contact = await Contact.create({
@@ -30,8 +30,8 @@ const contactus = async (req, res) => {
             lastname: req.body.lastname,
             email: req.body.email,
             description: req.body.description,
-            //file:req.body.file,
-            file: "./uploads" + req.file.filename
+            file:req.body.file,
+            //file: "./uploads" + req.file.filename
         })
         console.log(contact)
         transporter.sendMail(mail, (error, info) => {
