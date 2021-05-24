@@ -14,26 +14,32 @@ var transporter = nodemailer.createTransport({
 
 // api for contact us 
 const contactus = async (req, res) => {
-    var id = req.body.email
-   var attachments = req.body.file
-    var mail = {
-        from: 'ayushijain039@gmail.com',
-        to: id,
-        cc: 'ayushijainit17@acropolis.in,ayushijain039@gmail.com',
-        subject: 'Test email',
-        text: req.body.description,
-        attachments: [{ filename: attachments}]
-    };
+     var firstname = req.body.firstname
+     var lastname = req.body.lastname
+     var email = req.body.email
+     var description = req.body.description
+     
+    // var attachments = "/uploads"+req.file.filename
+    var file = './client/public/uploads/contacts/'+ req.file.filename
     try {
         const contact = await Contact.create({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            description: req.body.description,
-            file:req.body.file,
-            //file: "./uploads" + req.file.filename
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            description: description,
+            //  file:attachments,
+            file: file
         })
         console.log(contact)
+        //changes
+        var mail = {
+            from: 'ayushijain039@gmail.com',
+            to: email,
+            // cc: 'ayushijainit17@acropolis.in,ayushijain039',
+            subject: 'Test email',
+            text: description,
+           attachments: [{ filename:file, path:file,contentType: 'application/pdf' }] //change1
+        };//path:'../uploads'
         transporter.sendMail(mail, (error, info) => {
             if (error) {
                 console.log(error)
@@ -49,7 +55,7 @@ const contactus = async (req, res) => {
         console.log(JSON.stringify(error))
         if (error.code === 11000) {
             return res.json({ status: 'error', error: 'Email already in use' });
-        }
+                }
     }
 }
 //api for fetching contactus data
