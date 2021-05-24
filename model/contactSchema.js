@@ -3,7 +3,7 @@ const Schema=mongoose.Schema;
 const contactSchema= new Schema({
     firstname:{type:String,required:true},
     lastname:{type:String,required:true},
-    email:{type:String,required:true},
+    email:{type:String,required:false},
     description:{type:String,required:true},
     file:{
         type:String,
