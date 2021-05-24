@@ -3,75 +3,88 @@ import '../style/contactform.css'
 import axios from 'axios';
 import Nav from './Navbar'
 
-const contact=(e)=>{
-    e.preventDefault()
-    let firstname=e.target[0].value
-    let lastname=e.target[1].value
-    let email=e.target[2].value
-    let description=e.target[3].value
-    let file=e.target[4].value
-    console.log(firstname)
-      axios.post('http://localhost:3000/api/contactus',{firstname:firstname,lastname:lastname,email:email,description:description,file:file})
-      .then((res)=>{
-        console.log(res.data)
+const contact = (e) => {
+  e.preventDefault()
+  let firstname = e.target[0].value
+  let lastname = e.target[1].value
+  let email = e.target[2].value
+  let description = e.target[3].value
+  let file = e.target[4].value
+  console.log(firstname)
+  axios.post('http://localhost:3000/api/contactus',
+    {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      description: description,
+      file: file
+    }).then((res) => {
+      console.log(res.data)
+      window.alert('Check your Email')
     })
-    }
+   
+}
+
 function ContactForm() {
 
-    return (
+  return (
 
-        <div className="container">
-            <Nav /><br /><br /><br />
-           
-        <h3>Contact Us</h3>
-        <form   className="form" onSubmit={contact} encType="multipart/form-data">
-          <div>
-            <label for="formControlInput" className="form-label">
-              First Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="First Name"
-            />
+    <div className="container contact">
+      <Nav /><br /><br />
+
+      <h3>Get In Touch</h3><br />
+      <form className="form" onSubmit={contact} encType="multipart/form-data">
+        <div className="row">
+          <div className="col">
+            <div>
+
+              <label for="formControlInput" className="form-label"> First Name</label>
+              <input type="text" className="form-control" placeholder="First Name" />
+            </div>
           </div>
-          <div>
-            <label for="formControlInput" className="form-label">
-              Last Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Last Name"
-            />
+          <div className="col">
+            <div>
+              <label for="formControlInput" className="form-label"> Last Name </label>
+              <input type="text" className="form-control" placeholder="Last Name" />
+            </div>
           </div>
-          <div>
-            <label for="formControlInput" className="form-label">
-              Email
-            </label>
-            <input type="text" className="form-control" placeholder="email" />
-          </div>
-          <div>
-            <label for="formControlInput" className="form-label">
-              Description
-            </label>
-            <textarea className="form-control" placeholder="description" id="floatingTextarea" style={{"height": "100px"}}></textarea>
+        </div>
+
+        <br />
+        {/* <div>
+            <label for="formControlInput" className="form-label"> First Name</label>
+            <input type="text" className="form-control"  placeholder="First Name" />
           </div>
 
           <div>
-            <label for="formFile" className="form-label text-start">
-              Default file input
-            </label>
-            <input className="form-control" type="file" id="formFile" />
-          </div>
+            <label for="formControlInput" className="form-label"> Last Name </label>
+            <input type="text" className="form-control" placeholder="Last Name"/>
+          </div> */}
 
-          <div className="submitbutton">
-            <button type="submit" id="submitbtn" class="btn btn-outline-primary">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+        <div>
+          <label for="formControlInput" className="form-label"> Email </label>
+          <input type="text" className="form-control" placeholder="abc@gmail.com" />
+        </div>
+        <br />
+        <div>
+          <label for="formControlInput" className="form-label"> Description</label>
+          <textarea className="form-control" id="floatingTextarea" rows="3"></textarea>
+        </div>
+        <br />
+        <div>
+          <label for="formFile" className="form-label text-start">  Default file input </label>
+          <input className="form-control" type="file" id="formFile" />
+        </div>
+        <br />
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1">Sent an Email</label>
+        </div>
+        <div className="text-center">
+          <input type="submit" value="Submit" id="submitbtn" class="btn btn-outline-primary" />
+        </div>
+      </form>
+    </div>
+  );
 }
 export default ContactForm
