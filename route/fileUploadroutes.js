@@ -4,23 +4,14 @@ const {contactus, getContactUs} = require('../controller/fileUploadercontroller'
 const multer= require('multer')
 const path = require('path')
 
-//multer config
-var Storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads')//change2
-    },
-    filename: (req, file, cb)=> {
-      cb(null, + Date.now() + path.extname(file.originalname));
-    }
-  })
 
-  //multer middleware
-var upload = multer({ storage: Storage }).single('file')
 
 //multer config for contact us
 var contact_storage=multer.diskStorage({
   destination:function(req,file,cb){
-    cb(null,'uploads')
+    // cb(null,'../server/uploads')
+    // cb(null,'/uploads')
+    cb(null, './client/public/uploads/contacts/') //change2
   },filename:(req,file,cb)=>{
     cb(null,+Date.now()+path.extname(file.originalname))
   }
