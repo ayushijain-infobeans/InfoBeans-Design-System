@@ -1,32 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/contactform.css'
 import axios from 'axios';
 import Nav from './Navbar'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const contact = (e) => {
-  e.preventDefault()
-  let firstname = e.target[0].value
-  let lastname = e.target[1].value
-  let email = e.target[2].value
-  let description = e.target[3].value
-  let file = e.target[4].value
-  console.log(firstname)
-  axios.post('http://localhost:3000/api/contactus',
-    {
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      description: description,
-      file: file
-    }).then((res) => {
+
+function ContactForm() {
+  const [file, setfile] = useState([])
+  const contact = (e) => {
+    setfile(e.target[4].files[0])
+    console.log(e.target[4].files[0])
+    e.preventDefault()
+    let firstname = e.target[0].value
+    let lastname = e.target[1].value
+    let email = e.target[2].value
+    let description = e.target[3].value
+    
+    const data = new FormData()
+    data.append("firstname", firstname)
+    data.append("lastname", lastname)
+    data.append("email", email)
+    data.append("description", description)
+    data.append("file", file)
+    console.log(data)
+
+    axios.post('http://localhost:3000/api/contactus', data).then((res) => {
       console.log(res.data)
       window.alert('Check your Email')
     })
-   
-}
-
-function ContactForm() {
-
+  }
   return (
 
     <div className="container contact">
@@ -51,16 +54,6 @@ function ContactForm() {
         </div>
 
         <br />
-        {/* <div>
-            <label for="formControlInput" className="form-label"> First Name</label>
-            <input type="text" className="form-control"  placeholder="First Name" />
-          </div>
-
-          <div>
-            <label for="formControlInput" className="form-label"> Last Name </label>
-            <input type="text" className="form-control" placeholder="Last Name"/>
-          </div> */}
-
         <div>
           <label for="formControlInput" className="form-label"> Email </label>
           <input type="text" className="form-control" placeholder="abc@gmail.com" />
