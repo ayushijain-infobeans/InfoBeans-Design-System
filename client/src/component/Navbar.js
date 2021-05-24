@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, Link, withRouter } from "react-router-dom"
 
 
 import "../style/NavBar.css";
@@ -26,26 +26,23 @@ const Nav = () => {
 
         <ul className="navbar__links">
           <li>
-            <a>Home</a>
+           <Link to="/login"> <a>Home</a></Link>
           </li>
           <li>
-            <a>Contact Form</a>
+           <Link to="/ContactForm"><a>Contact Form</a></Link> 
           </li>
           <li>
-            <a>Display Data</a>
+           <Link to="/ContactList"><a>Display Data</a> </Link> 
           </li>
         
-          <li>
-            <a>Gallery</a>
-          </li>
           <li>
             <a onClick={logout}>Logout</a>
           </li>
         </ul>
       </div>
-
+      
       <div className="navbar__icon">
-        <i className="ibic-apps"></i>
+      <i class="fas fa-th fa-2x"></i>
       </div>
       <div className="navbar__user">
         <div className="navbar__userName">
@@ -56,10 +53,12 @@ const Nav = () => {
           src="https://infobeans-intranet.web.app/assets/images/sample-profile-image.jpg"
           alt="user-img"
         />
-        <i className="ibic-caret-down"></i>
+        <div className="nav-caret">
+                    <i className="fas fa-caret-down caret"></i>
+                </div>
       </div>
     </header>
   );
 };
 
-export default Nav;
+export default withRouter(Nav)
