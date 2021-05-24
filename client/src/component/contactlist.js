@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-
-
+import Nav from './Navbar'
 
 
 function ContactList() {
@@ -22,15 +21,18 @@ function ContactList() {
     
     },[])
     return (
-        <div id="container" className0="container">
+        <div  className="container">
+              
+<br/><br/><br/><br/>
+<h3 className="text-center">User Data</h3><br/>
             <table className="table table-striped">
-  <thead>
+  <thead className="thead-dark">
     <tr>
      
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
+      <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Description</th>
+      <th scope="col">File</th>
     </tr>
   </thead>
   <tbody>
@@ -38,8 +40,9 @@ function ContactList() {
        return( 
        <tr>
       
-      <td>{each.firstname}</td>
-      <td>{each.lastname}</td>
+      <td>{each.firstname +" " +each.lastname }</td>
+
+      {/* <td>{each.lastname}</td> */}
       <td>{each.email}</td>
       <td>{each.description}</td>
       <td>{each.file}</td>
