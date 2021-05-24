@@ -5,9 +5,10 @@ import Nav from './Navbar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function ContactForm() {
   const [file, setfile] = useState([])
+
+ 
   const contact = (e) => {
     setfile(e.target[4].files[0])
     console.log(e.target[4].files[0])
@@ -16,7 +17,7 @@ function ContactForm() {
     let lastname = e.target[1].value
     let email = e.target[2].value
     let description = e.target[3].value
-    
+
     const data = new FormData()
     data.append("firstname", firstname)
     data.append("lastname", lastname)
@@ -31,9 +32,9 @@ function ContactForm() {
     })
   }
   return (
-
+    <>
+    <Nav/>
     <div className="container contact">
-      <Nav /><br /><br />
 
       <h3>Get In Touch</h3><br />
       <form className="form" onSubmit={contact} encType="multipart/form-data">
@@ -54,6 +55,7 @@ function ContactForm() {
         </div>
 
         <br />
+        
         <div>
           <label for="formControlInput" className="form-label"> Email </label>
           <input type="text" className="form-control" placeholder="abc@gmail.com" />
@@ -76,8 +78,16 @@ function ContactForm() {
         <div className="text-center">
           <input type="submit" value="Submit" id="submitbtn" class="btn btn-outline-primary" />
         </div>
+        <div>
+         
+        </div>
+
       </form>
+
+
+
     </div>
+</>
   );
 }
 export default ContactForm
