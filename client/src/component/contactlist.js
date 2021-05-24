@@ -21,15 +21,18 @@ function ContactList() {
     
     },[])
     return (
+      <>
+      <Nav/>
         <div  className="container">
               
-<br/><br/><br/><br/>
+<br/><br/>
 <h3 className="text-center">User Data</h3><br/>
             <table className="table table-striped">
   <thead className="thead-dark">
     <tr>
      
       <th scope="col">Name</th>
+      {/* <th scope="col">Last Name</th> */}
       <th scope="col">Email</th>
       <th scope="col">Description</th>
       <th scope="col">File</th>
@@ -53,6 +56,7 @@ function ContactList() {
   </tbody>
 </table>
         </div>
+        </>
     )
 }
 
